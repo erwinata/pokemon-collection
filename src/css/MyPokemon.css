@@ -1,0 +1,63 @@
+.MyPokemonContainer {
+  background: #fff;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  align-content: flex-start;
+  justify-content: flex-start;
+  height: 87.5vh;
+  margin: 2.5vh 5%;
+  overflow-y: scroll;
+  padding-bottom: 15vh;
+  border-radius: 1rem;
+}
+
+.MyPokemonContainer > a {
+  display: block;
+  flex: 0 0 33%;
+  margin: 1%;
+}
+.MyPokemonItem {
+  /* width: 33%; */
+  text-align: center;
+  /* border: 1px solid black; */
+}
+.MyPokemonItem .PokemonSprite {
+  position: relative;
+  text-align: center;
+  margin-top: 1rem;
+}
+.MyPokemonItem .PokemonSprite .Background {
+  display: inline-block;
+}
+
+.MyPokemonItem .PokemonSprite .Background {
+  width: 5rem;
+  height: 5rem;
+  border-radius: 100%;
+  background: #f2f2f2;
+  /* margin: -25% -25%; */
+}
+.MyPokemonItem .PokemonSprite img {
+  width: 100%;
+  transform: scale(1.1, 1.1);
+}
+
+.MyPokemonItem h1 {
+  font-size: 0.7rem;
+  font-weight: normal;
+}
+.MyPokemonItem .TypeContainer {
+  white-space: nowrap;
+}
+.MyPokemonItem .TypeContainer img {
+  height: 0.8rem;
+}
+
+@media only screen and (min-device-width: 0px) and (max-device-width: 240px) {
+  .MyPokemonItem {
+    width: 45%;
+    margin: 1%;
+    padding: 0rem 1rem;
+  }
+}
