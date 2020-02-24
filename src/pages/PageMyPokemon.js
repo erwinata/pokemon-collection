@@ -1,10 +1,22 @@
-import React, { Component } from "react";
+import React, { useState, useEffect } from "react";
 import "../App.css";
 import "../css/MyPokemon.css";
 import { Link } from "react-router-dom";
 import PokemonTypes from "../components/PokemonType";
 import { useSelector, useDispatch } from "react-redux";
 import { GetTypesImage } from "../components/PokemonType";
+import Axios from "axios";
+import Loading from "../components/Loading";
+
+const ButtonBack = () => {
+  return (
+    <div className="ButtonBack">
+      <div className="Text">
+        <h1>BACK</h1>
+      </div>
+    </div>
+  );
+};
 
 const MyPokemonItem = props => {
   return (
@@ -29,66 +41,72 @@ const MyPokemonItem = props => {
   );
 };
 
-class MyPokemonContainer extends Component {
-  constructor(props) {
-    super(props);
+const MyPokemonContainer = props => {
+  var [state, setState] = useState({
+    loading: true,
+    pokemons: []
+  });
 
-    this.state = {
-      pokemonIndex: 1,
-      loading: true,
-      pokemons: []
+  var API = "https://pokeapi.co/api/v2/pokemon/";
+
+  console.log(props);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const reqs = [];
+      for (var i = 0; i < props.myPokemon.total; i++) {
+        const req = Axios.get(API + props.myPokemon.pokemon[i].id);
+        reqs.push(req);
+      }
+
+      const result = await Axios.all(reqs);
+
+      for (var i = 0; i < result.length; i++) {
+        let pokemon = {
+          id: result[i].data.id,
+          nickname: props.myPokemon.pokemon[i].nickname,
+          name: result[i].data.name,
+          img: result[i].data.sprites.front_default,
+          types: result[i].data.types
+        };
+
+        var temp = state.pokemons;
+        temp.push(pokemon);
+
+        setState({
+          pokemons: temp,
+          loading: false
+        });
+      }
+
+      console.log(state);
     };
-  }
 
-  async componentDidMount() {
-    console.log(this.props);
-    // var myPokemon = useSelector(state => state);
-    // var myPokemon = {
-    //   total: 2,
-    //   pokemon: [1, 2]
-    // };
-    var pokemonArr = [];
-    var API = "https://pokeapi.co/api/v2/pokemon/";
+    fetchData();
+  }, []);
 
-    for (var i = 0; i < this.props.myPokemon.total; i++) {
-      await fetch(API + this.props.myPokemon.pokemon[i].id)
-        .then(res => res.json())
-        .then(data => {
-          var pokemon = {
-            id: data.id,
-            nickname: this.props.myPokemon.pokemon[i].nickname,
-            name: data.name,
-            img: data.sprites.front_default,
-            types: data.types
-          };
-
-          pokemonArr.push(pokemon);
-
-          this.setState({
-            loading: false,
-            pokemons: pokemonArr,
-            pokemonIndex: this.state.pokemonIndex + 1
-          });
-        })
-        .catch(function(error) {});
-    }
-  }
-
-  render() {
-    if (this.state.loading) {
-      return <div>Loading</div>;
-    }
+  if (props.myPokemon.total == 0) {
     return (
-      <div className="MyPokemonContainer">
-        {this.state.pokemons.map(data => (
-          <Link to={"/pokemon/" + data.id}>
-            <MyPokemonItem data={data} />
-          </Link>
-        ))}
+      <div>
+        Oops! You don't have any pokemon
+        <br />
+        Go catch some!
       </div>
     );
   }
-}
+  if (state.loading) {
+    return <Loading />;
+  }
+  return (
+    <div className="MyPokemonContainer">
+      {state.pokemons.map(data => (
+        <Link to={"/pokemon/" + data.id} style={{ textDecoration: "none" }}>
+          <MyPokemonItem data={data} />
+        </Link>
+      ))}
+    </div>
+  );
+};
 
 export const PageMyPokemon = () => {
   var myPokemon = useSelector(state => state);
@@ -97,11 +115,12 @@ export const PageMyPokemon = () => {
     <div className="PageMyPokemon">
       <div className="title">
         <h1>My Pokemon</h1>
-        <h2>See all your pokemons here</h2>
       </div>
 
       <MyPokemonContainer myPokemon={myPokemon} />
-      <Link to="/"></Link>
+      <Link to="/" style={{ textDecoration: "none" }}>
+        <ButtonBack />
+      </Link>
     </div>
   );
 };

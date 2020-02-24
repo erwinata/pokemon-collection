@@ -15,7 +15,7 @@ export const myPokemonReducer = (state = initialState, action) => {
 
       var index = -1;
       for (var i = 0; i < array.length; i++) {
-        if (array[i].id == action.data.id) {
+        if (array[i].id === action.data.id) {
           index = i;
         }
       }

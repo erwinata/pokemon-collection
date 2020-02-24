@@ -21,7 +21,7 @@ export const PokemonTypes = [
 
 export const GetTypesImage = type => {
   for (var i = 0; i < PokemonTypes.length; i++) {
-    if (type == PokemonTypes[i].type) {
+    if (type === PokemonTypes[i].type) {
       return PokemonTypes[i].src;
     }
   }
