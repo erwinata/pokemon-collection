@@ -1,0 +1,17 @@
+.PageTitle {
+  /* height: 10vh; */
+  padding: 1rem 1rem;
+}
+.PageTitle h1 {
+  margin-top: -0.5rem;
+  font-size: 2rem;
+  font-weight: lighter;
+  text-transform: uppercase;
+  letter-spacing: 0.25rem;
+}
+.PageTitle h2 {
+  margin-top: -0.25rem;
+  font-size: 0.9rem;
+  font-weight: normal;
+  text-align: left;
+}

@@ -1,55 +1,11 @@
+import "./WildPokemonContainer.css";
+
 import React, { useEffect, useState } from "react";
-import "../App.css";
-import "../css/WildPokemon.css";
-import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
+import { WildPokemonItem } from "../parts/WildPokemonItem";
+import { Link } from "react-router-dom";
 import Axios from "axios";
-import Loading from "../components/Loading";
-
-const ButtonMyPokemon = () => {
-  const myPokemon = useSelector(state => state);
-  return (
-    <div className="ButtonMyPokemon">
-      <div className="Text">
-        <h2>MY POKEMON</h2>
-        <h1>
-          <img src="/res/pokeball-icon.png"></img>
-          {myPokemon.total}
-        </h1>
-      </div>
-    </div>
-  );
-};
-
-const WildPokemonItem = props => {
-  const dispatch = useDispatch();
-
-  return (
-    <div
-      className={
-        props.data.hasPokemon ? "WildPokemonItem hasPokemon" : "WildPokemonItem"
-      }
-      // onClick={() => dispatch(addPokemon(props.data.id))}
-    >
-      <div className="PokemonSprite">
-        <div className="Background">
-          <img src={props.data.img}></img>
-        </div>
-      </div>
-      {/* <div className="PokemonInfo">
-        <h1>{props.data.name}</h1>
-        <div className="TypeContainer">
-          {props.data.types[0] ? (
-            <img src={GetTypesImage(props.data.types[0].type.name)}></img>
-          ) : null}
-          {props.data.types[1] ? (
-            <img src={GetTypesImage(props.data.types[1].type.name)}></img>
-          ) : null}
-        </div>
-      </div> */}
-    </div>
-  );
-};
+import Loading from "../parts/Loading";
 
 export const WildPokemonContainer = () => {
   const myPokemon = useSelector(state => state);
@@ -145,21 +101,6 @@ export const WildPokemonContainer = () => {
           {isFetching ? <Loading /> : null}
         </div>
       )}
-    </div>
-  );
-};
-
-export const PageWildPokemon = () => {
-  return (
-    <div className="PageWildPokemon">
-      <div className="title">
-        <h1>WILD Pokemon</h1>
-      </div>
-
-      <WildPokemonContainer />
-      <Link to="/my-pokemon">
-        <ButtonMyPokemon />
-      </Link>
     </div>
   );
 };

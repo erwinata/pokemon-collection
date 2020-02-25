@@ -1,0 +1,20 @@
+.PokemonBigPreview {
+  /* left: -0.5rem; */
+  position: relative;
+  top: 2rem;
+}
+
+.PokemonBigPreview .Background {
+  width: 8rem;
+  height: 8rem;
+  margin: 0 auto;
+  border-radius: 100%;
+  background: #e7eeef;
+  /* margin: -25% -25%; */
+  border: 3px #fff solid;
+  box-shadow: 0px 2px 5px 1px rgba(0, 0, 0, 0.1);
+}
+.PokemonBigPreview img {
+  width: 100%;
+  transform: scale(1.5, 1.5);
+}

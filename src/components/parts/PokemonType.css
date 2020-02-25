@@ -1,0 +1,14 @@
+.PokemonType {
+  white-space: nowrap;
+}
+
+.PokemonDetail .PokemonType {
+  margin-top: 0.5rem;
+}
+.PokemonDetail .PokemonType img {
+  height: 1.25rem;
+}
+
+.MyPokemon .PokemonType img {
+  height: 0.8rem;
+}

@@ -4,7 +4,7 @@ import "./index.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import { createStore } from "redux";
-import { myPokemonReducer } from "./reducers/MyPokemon";
+import { myPokemonReducer } from "./reducers/myPokemonReducer";
 import { Provider } from "react-redux";
 
 //ACTION

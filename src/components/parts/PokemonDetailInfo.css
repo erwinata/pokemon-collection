@@ -1,0 +1,26 @@
+.PokemonDetailInfo {
+  padding: 2rem 1rem;
+  width: 80%;
+  margin: 0 auto;
+  background: #fff;
+  border-radius: 1rem;
+}
+
+.PokemonDetailInfo h1 {
+  text-transform: uppercase;
+  font-size: 1.2rem;
+  letter-spacing: 0.25rem;
+  margin-top: 1rem;
+}
+.PokemonDetailInfo hr {
+  margin: 0.5rem 0;
+  border: none;
+  border-top: 1px solid #ddd;
+}
+.PokemonDetailInfo h2 {
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  font-weight: lighter;
+  letter-spacing: 0.25rem;
+  margin-top: 0.5rem;
+}

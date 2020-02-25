@@ -1,0 +1,53 @@
+.WildPokemonItem {
+  width: 100%;
+  /* background: #fff; */
+  border-radius: 1rem;
+  padding: 0.1rem 0.25rem;
+  text-align: left;
+}
+.WildPokemonItem.hasPokemon {
+  opacity: 0.25;
+}
+.WildPokemonItem > * {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.WildPokemonItem .PokemonSprite {
+  margin: 2.5% 0rem;
+  /* left: -0.5rem; */
+  position: relative;
+}
+
+.WildPokemonItem .PokemonSprite .Background {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 100%;
+  background: #e7eeef;
+  /* margin: -25% -25%; */
+  border: 3px #fff solid;
+  box-shadow: 0px 2px 5px 1px rgba(0, 0, 0, 0.1);
+}
+.WildPokemonItem .PokemonSprite img {
+  width: 100%;
+  transform: scale(1.5, 1.5);
+  /* margin: -25% -25%; */
+}
+
+.WildPokemonItem .PokemonInfo {
+  margin-top: 0rem;
+}
+.WildPokemonItem h1 {
+  font-size: 0.8rem;
+  font-weight: normal;
+  text-align: left;
+  white-space: nowrap;
+  text-transform: capitalize;
+}
+.WildPokemonItem .TypeContainer {
+  white-space: nowrap;
+  text-align: left;
+}
+.WildPokemonItem .TypeContainer img {
+  height: 0.8rem;
+}

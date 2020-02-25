@@ -1,0 +1,38 @@
+.MyPokemonItem {
+  /* width: 33%; */
+  text-align: center;
+  /* border: 1px solid black; */
+}
+.MyPokemonItem .PokemonSprite {
+  position: relative;
+  text-align: center;
+  margin-top: 1rem;
+}
+.MyPokemonItem .PokemonSprite .Background {
+  display: inline-block;
+}
+
+.MyPokemonItem .PokemonSprite .Background {
+  width: 5rem;
+  height: 5rem;
+  border-radius: 100%;
+  background: #f2f2f2;
+  /* margin: -25% -25%; */
+}
+.MyPokemonItem .PokemonSprite img {
+  width: 100%;
+  transform: scale(1.1, 1.1);
+}
+
+.MyPokemonItem h1 {
+  text-transform: uppercase;
+  font-size: 0.7rem;
+  font-weight: lighter;
+  letter-spacing: 0.1rem;
+}
+.MyPokemonItem .TypeContainer {
+  white-space: nowrap;
+}
+.MyPokemonItem .TypeContainer img {
+  height: 0.8rem;
+}

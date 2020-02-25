@@ -1,0 +1,29 @@
+.MyPokemonContainer {
+  background: #fff;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  align-content: flex-start;
+  justify-content: space-around;
+  margin: 0 5%;
+  border-radius: 1rem;
+}
+
+.MyPokemonContainer > a {
+  display: block;
+  flex: 0 0 30%;
+  margin: 1%;
+}
+
+.ButtonBack > * {
+  display: inline-block;
+  vertical-align: middle;
+}
+.ButtonBack h1 {
+  font-size: 1rem;
+  color: #fff;
+  font-weight: normal;
+  text-align: center;
+  margin-top: -0.25rem;
+  letter-spacing: 0.1rem;
+}

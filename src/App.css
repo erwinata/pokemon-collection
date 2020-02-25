@@ -22,24 +22,6 @@ body {
   position: relative;
 }
 
-.title {
-  /* height: 10vh; */
-  padding: 1rem 1rem;
-}
-.title h1 {
-  margin-top: -0.5rem;
-  font-size: 2rem;
-  font-weight: lighter;
-  text-transform: uppercase;
-  letter-spacing: 0.25rem;
-}
-.title h2 {
-  margin-top: -0.25rem;
-  font-size: 0.9rem;
-  font-weight: normal;
-  text-align: left;
-}
-
 @media only screen and (min-device-width: 0px) and (max-device-width: 320px) {
   :root {
     font-size: 12px;

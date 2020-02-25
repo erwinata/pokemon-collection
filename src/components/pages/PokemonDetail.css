@@ -1,0 +1,13 @@
+.PokemonDetail {
+  width: 100%;
+  height: 100vh;
+  background: linear-gradient(0deg, #83adce 0%, #b1f0e7 100%);
+  position: relative;
+}
+
+.PokemonContainer {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  transform: translate(0, -50%);
+}

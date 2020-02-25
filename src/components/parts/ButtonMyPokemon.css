@@ -1,0 +1,51 @@
+.ButtonMyPokemon {
+  z-index: 10;
+  position: fixed;
+  bottom: 5vh;
+  left: 50%;
+  transform: translate(-50%, 0);
+  margin: 0 auto;
+  padding: 0.5rem 3rem;
+  text-align: center;
+  border-radius: 5vh;
+  border: 2px solid #fff;
+  box-shadow: 0px 5px 5px 1px rgba(0, 0, 0, 0.25);
+  background: rgb(80, 213, 223);
+  background: linear-gradient(
+    90deg,
+    rgba(80, 213, 223, 1) 0%,
+    rgba(96, 218, 153, 1) 100%
+  );
+  white-space: nowrap;
+}
+.ButtonMyPokemon > * {
+  display: inline-block;
+  vertical-align: middle;
+}
+.ButtonMyPokemon img {
+  height: 1rem;
+  margin-right: 0.5rem;
+}
+.ButtonMyPokemon .Text h2 {
+  font-size: 0.75rem;
+  color: #fff;
+  font-weight: normal;
+  text-align: center;
+  margin-top: -0.25rem;
+  letter-spacing: 0.1rem;
+}
+.ButtonMyPokemon .Text h1 {
+  position: relative;
+  top: 0.15rem;
+  text-align: center;
+  font-size: 1.4rem;
+  color: #fff;
+  background: #36b7a8;
+  border-radius: 10rem;
+  padding: 0 1.5rem 0.15rem;
+}
+.ButtonMyPokemon .Text h1 span {
+  color: #7bddd2;
+  font-size: 0.9rem;
+  font-weight: lighter;
+}

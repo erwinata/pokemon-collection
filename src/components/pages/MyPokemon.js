@@ -1,45 +1,13 @@
 import React, { useState, useEffect } from "react";
-import "../App.css";
-import "../css/MyPokemon.css";
+import "./MyPokemon.css";
 import { Link } from "react-router-dom";
-import PokemonTypes from "../components/PokemonType";
+import { GetTypesImage } from "../helpers/PokemonType";
 import { useSelector, useDispatch } from "react-redux";
-import { GetTypesImage } from "../components/PokemonType";
 import Axios from "axios";
-import Loading from "../components/Loading";
-
-const ButtonBack = () => {
-  return (
-    <div className="ButtonBack">
-      <div className="Text">
-        <h1>BACK</h1>
-      </div>
-    </div>
-  );
-};
-
-const MyPokemonItem = props => {
-  return (
-    <div className="MyPokemonItem">
-      <div className="PokemonSprite">
-        <div className="Background">
-          <img src={props.data.img}></img>
-        </div>
-      </div>
-      <div className="PokemonInfo">
-        <h1>{props.data.nickname}</h1>
-        <div className="TypeContainer">
-          {props.data.types[0] ? (
-            <img src={GetTypesImage(props.data.types[0].type.name)}></img>
-          ) : null}
-          {props.data.types[1] ? (
-            <img src={GetTypesImage(props.data.types[1].type.name)}></img>
-          ) : null}
-        </div>
-      </div>
-    </div>
-  );
-};
+import Loading from "../parts/Loading";
+import { ButtonBack } from "../parts/ButtonBack";
+import { PageTitle } from "../parts/PageTitle";
+import { MyPokemonItem } from "../parts/MyPokemonItem";
 
 const MyPokemonContainer = props => {
   var [state, setState] = useState({
@@ -108,16 +76,15 @@ const MyPokemonContainer = props => {
   );
 };
 
-export const PageMyPokemon = () => {
+export const MyPokemon = () => {
   var myPokemon = useSelector(state => state);
 
   return (
-    <div className="PageMyPokemon">
-      <div className="title">
-        <h1>My Pokemon</h1>
-      </div>
+    <div className="MyPokemon">
+      <PageTitle text="MY POKEMON" />
 
       <MyPokemonContainer myPokemon={myPokemon} />
+
       <Link to="/" style={{ textDecoration: "none" }}>
         <ButtonBack />
       </Link>

@@ -1,0 +1,17 @@
+.WildPokemonContainer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  align-content: flex-start;
+  justify-content: center;
+  /* height: 100vh; */
+  /* margin-top: 2.5vh; */
+  /* overflow-y: scroll; */
+  /* padding-bottom: 15vh; */
+}
+
+.WildPokemonContainer > a {
+  display: block;
+  flex: 0 0 15%;
+  /* margin: 1%; */
+}

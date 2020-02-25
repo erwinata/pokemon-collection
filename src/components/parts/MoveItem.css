@@ -1,0 +1,28 @@
+.MoveItem {
+  background: #f4f4f4;
+  border-radius: 10rem;
+  padding: 0.5rem 0.75rem;
+  text-align: left;
+  font-size: 0.8rem;
+  margin: 0.25rem 0;
+  font-weight: lighter;
+}
+.MoveItem > * {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.MoveItem img {
+  height: 1rem;
+  margin-right: 0.25rem;
+}
+.MoveItem span {
+  float: right;
+  padding-left: 0.25rem;
+  border-left: 1px solid #c4c4ce;
+}
+.MoveItem span small {
+  font-weight: bold;
+  color: #bbb;
+  margin-right: 0.25rem;
+}

@@ -26,5 +26,3 @@ export const GetTypesImage = type => {
     }
   }
 };
-
-export default PokemonTypes;
