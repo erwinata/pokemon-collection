@@ -3,7 +3,7 @@ import "./App.css";
 import { WildPokemon } from "./components/pages/WildPokemon";
 import { MyPokemon } from "./components/pages/MyPokemon";
 import { PokemonDetail } from "./components/pages/PokemonDetail";
-import { BrowserRouter, Route, Switch, Link } from "react-router-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 const App = () => {
   return (

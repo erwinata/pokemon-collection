@@ -1,27 +1,29 @@
 import "./PokemonDetail.css";
 
 import React, { useEffect, useState } from "react";
-import { GetTypesImage } from "../helpers/PokemonType";
 import { useSelector, useDispatch } from "react-redux";
 import Axios from "axios";
 import Loading from "../parts/Loading";
 import { PokemonBigPreview } from "../parts/PokemonBigPreview";
 import { PokemonDetailInfo } from "../parts/PokemonDetailInfo";
+import {
+  registerPokemonDetail,
+  updateHasPokemon
+} from "../../actions/pokemonAction";
 
 export const PokemonDetail = props => {
-  var myPokemon = useSelector(state => state);
+  var myPokemon = useSelector(state => state.myPokemon);
+  var dispatch = useDispatch();
 
   var id = props.match.params.id;
 
   var [data, setData] = useState({
-    pokemon: null,
-    hasPokemon: false,
     loading: true
   });
 
-  var API = "https://pokeapi.co/api/v2/pokemon/";
-
   useEffect(() => {
+    var API = "https://pokeapi.co/api/v2/pokemon/";
+
     const fetchData = async () => {
       const result = await Axios.get(API + id);
 
@@ -45,7 +47,7 @@ export const PokemonDetail = props => {
 
       var moves = [];
 
-      for (var i = 0; i < resultMove.length; i++) {
+      for (i = 0; i < resultMove.length; i++) {
         let move = {
           name: resultMove[i].data.names[2].name,
           type: resultMove[i].data.type.name,
@@ -55,20 +57,20 @@ export const PokemonDetail = props => {
         moves.push(move);
       }
 
+      var pokemonDetail = {
+        id: result.data.id,
+        nickname: pokemonName,
+        name: result.data.name.toUpperCase(),
+        img: result.data.sprites.front_default,
+        types: result.data.types,
+        moves: moves
+      };
+      dispatch(registerPokemonDetail(pokemonDetail));
+      dispatch(updateHasPokemon(hasPokemon));
+
       setData({
-        pokemon: {
-          id: result.data.id,
-          nickname: pokemonName,
-          name: result.data.name.toUpperCase(),
-          img: result.data.sprites.front_default,
-          types: result.data.types,
-          moves: moves
-        },
-        hasPokemon: hasPokemon,
         loading: false
       });
-
-      console.log(myPokemon);
     };
 
     fetchData();
@@ -80,8 +82,8 @@ export const PokemonDetail = props => {
         <Loading />
       ) : (
         <div className="PokemonContainer">
-          <PokemonBigPreview pokemon={data.pokemon} />
-          <PokemonDetailInfo data={data} setData={setData} />
+          <PokemonBigPreview />
+          <PokemonDetailInfo />
         </div>
       )}
     </div>

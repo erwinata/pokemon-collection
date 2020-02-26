@@ -1,8 +1,8 @@
 import "./ButtonRelease.css";
 import React from "react";
 import Swal from "sweetalert2";
-import { addPokemon, releasePokemon } from "../../actions/pokemonAction";
-import { useSelector, useDispatch } from "react-redux";
+import { releasePokemon } from "../../actions/pokemonAction";
+import { useDispatch } from "react-redux";
 
 export const ReleasePokemon = (id, nickname, dispatch, data, setData) => {
   Swal.fire({

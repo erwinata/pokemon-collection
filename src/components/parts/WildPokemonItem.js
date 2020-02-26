@@ -10,7 +10,7 @@ export const WildPokemonItem = props => {
     >
       <div className="PokemonSprite">
         <div className="Background">
-          <img src={props.data.img}></img>
+          <img src={props.data.img} alt="Pokemon Sprite" />
         </div>
       </div>
     </div>

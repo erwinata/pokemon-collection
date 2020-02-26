@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import "./MyPokemonItem.css";
 import { PokemonType } from "./PokemonType";
 
@@ -7,7 +7,7 @@ export const MyPokemonItem = props => {
     <div className="MyPokemonItem">
       <div className="PokemonSprite">
         <div className="Background">
-          <img src={props.data.img}></img>
+          <img src={props.data.img} alt="Pokemon Sprite"></img>
         </div>
       </div>
       <div className="PokemonInfo">

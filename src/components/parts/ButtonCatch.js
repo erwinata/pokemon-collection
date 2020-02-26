@@ -1,10 +1,17 @@
 import "./ButtonCatch.css";
 import React from "react";
 import Swal from "sweetalert2";
-import { addPokemon, releasePokemon } from "../../actions/pokemonAction";
+import {
+  addPokemon,
+  updateHasPokemon,
+  updateNickname
+} from "../../actions/pokemonAction";
 import { useSelector, useDispatch } from "react-redux";
 
-export const AddPokemon = async (id, name, dispatch, data, setData) => {
+export const CatchPokemon = async (pokemon, dispatch) => {
+  var name = pokemon.name;
+  var id = pokemon.id;
+
   if (Math.random() < 0.5) {
     const { value: nickname } = await Swal.fire({
       title: "Success!",
@@ -19,16 +26,7 @@ export const AddPokemon = async (id, name, dispatch, data, setData) => {
       confirmButtonText: "OK"
     });
 
-    dispatch(addPokemon(id, nickname));
-
-    var pokemon = data.pokemon;
-    pokemon.nickname = nickname;
-
-    setData({
-      pokemon: pokemon,
-      hasPokemon: true,
-      loading: false
-    });
+    AddPokemon(id, nickname, dispatch);
   } else {
     Swal.fire({
       icon: "error",
@@ -38,21 +36,20 @@ export const AddPokemon = async (id, name, dispatch, data, setData) => {
   }
 };
 
+export const AddPokemon = async (id, nickname, dispatch) => {
+  dispatch(addPokemon(id, nickname));
+  dispatch(updateHasPokemon(true));
+  dispatch(updateNickname(nickname));
+};
+
 export const ButtonCatch = props => {
+  const pokemonDetail = useSelector(state => state.pokemonDetail);
   var dispatch = useDispatch();
 
   return (
     <button
       className="ButtonCatch"
-      onClick={() =>
-        AddPokemon(
-          props.data.pokemon.id,
-          props.data.pokemon.name,
-          dispatch,
-          props.data,
-          props.setData
-        )
-      }
+      onClick={() => CatchPokemon(pokemonDetail.pokemon, dispatch)}
     >
       CATCH
     </button>

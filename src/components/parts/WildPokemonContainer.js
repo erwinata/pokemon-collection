@@ -1,14 +1,14 @@
 import "./WildPokemonContainer.css";
 
 import React, { useEffect, useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import { WildPokemonItem } from "../parts/WildPokemonItem";
 import { Link } from "react-router-dom";
 import Axios from "axios";
 import Loading from "../parts/Loading";
 
 export const WildPokemonContainer = () => {
-  const myPokemon = useSelector(state => state);
+  const myPokemon = useSelector(state => state.myPokemon);
 
   var [data, setData] = useState({
     loading: true,
@@ -22,7 +22,6 @@ export const WildPokemonContainer = () => {
     )
       return;
     setIsFetching(true);
-    console.log(isFetching);
   }
 
   var [isFetching, setIsFetching] = useState(true);
@@ -33,7 +32,6 @@ export const WildPokemonContainer = () => {
     window.addEventListener("scroll", handleScroll);
 
     const fetchPokemon = async () => {
-      console.log("FETCHHHH");
       const reqs = [];
 
       var totalPokemonToLoad = 96;
@@ -52,7 +50,7 @@ export const WildPokemonContainer = () => {
 
       const result = await Axios.all(reqs);
 
-      for (var i = 0; i < result.length; i++) {
+      for (i = 0; i < result.length; i++) {
         var hasPokemon = false;
         for (let pokemon of myPokemon.pokemon) {
           if (pokemon.id === result[i].data.id) {
@@ -77,10 +75,7 @@ export const WildPokemonContainer = () => {
         });
         setIsFetching(false);
       }
-
-      console.log(data);
     };
-    console.log("Fetch more list items!");
 
     if (!isFetching) return;
     fetchPokemon();
@@ -94,7 +89,7 @@ export const WildPokemonContainer = () => {
       ) : (
         <div className="WildPokemonContainer">
           {data.pokemons.map(data => (
-            <Link to={"/pokemon/" + data.id}>
+            <Link to={"/pokemon/" + data.id} key={data.id}>
               <WildPokemonItem data={data} />
             </Link>
           ))}

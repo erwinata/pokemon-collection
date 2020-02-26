@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./MyPokemon.css";
 import { Link } from "react-router-dom";
-import { GetTypesImage } from "../helpers/PokemonType";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import Axios from "axios";
 import Loading from "../parts/Loading";
 import { ButtonBack } from "../parts/ButtonBack";
@@ -17,8 +16,6 @@ const MyPokemonContainer = props => {
 
   var API = "https://pokeapi.co/api/v2/pokemon/";
 
-  console.log(props);
-
   useEffect(() => {
     const fetchData = async () => {
       const reqs = [];
@@ -29,7 +26,7 @@ const MyPokemonContainer = props => {
 
       const result = await Axios.all(reqs);
 
-      for (var i = 0; i < result.length; i++) {
+      for (i = 0; i < result.length; i++) {
         let pokemon = {
           id: result[i].data.id,
           nickname: props.myPokemon.pokemon[i].nickname,
@@ -46,14 +43,12 @@ const MyPokemonContainer = props => {
           loading: false
         });
       }
-
-      console.log(state);
     };
 
     fetchData();
   }, []);
 
-  if (props.myPokemon.total == 0) {
+  if (props.myPokemon.total === 0) {
     return (
       <div>
         Oops! You don't have any pokemon
@@ -69,7 +64,7 @@ const MyPokemonContainer = props => {
     <div className="MyPokemonContainer">
       {state.pokemons.map(data => (
         <Link to={"/pokemon/" + data.id} style={{ textDecoration: "none" }}>
-          <MyPokemonItem data={data} />
+          <MyPokemonItem data={data} key={data.id} />
         </Link>
       ))}
     </div>
@@ -77,7 +72,7 @@ const MyPokemonContainer = props => {
 };
 
 export const MyPokemon = () => {
-  var myPokemon = useSelector(state => state);
+  var myPokemon = useSelector(state => state.myPokemon);
 
   return (
     <div className="MyPokemon">

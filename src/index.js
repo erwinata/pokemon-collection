@@ -4,17 +4,15 @@ import "./index.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import { createStore } from "redux";
-import { myPokemonReducer } from "./reducers/myPokemonReducer";
 import { Provider } from "react-redux";
+import { allReducer } from "./reducers/allReducer";
 
 //ACTION
 
 const store = createStore(
-  myPokemonReducer,
+  allReducer,
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
-
-store.subscribe(() => console.log(store.getState()));
 
 //DISPATCH
 
