@@ -20,7 +20,7 @@ export const pokemonDetailReducer = (state = initialState, action) => {
       pokemonCopy.nickname = action.data;
       return (state = {
         pokemon: pokemonCopy,
-        hasPokemon: action.data
+        hasPokemon: state.hasPokemon
       });
 
     default:

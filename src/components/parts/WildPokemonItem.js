@@ -5,7 +5,9 @@ export const WildPokemonItem = props => {
   return (
     <div
       className={
-        props.data.hasPokemon ? "WildPokemonItem hasPokemon" : "WildPokemonItem"
+        props.data.hasPokemon
+          ? "WildPokemonItem unavailable"
+          : "WildPokemonItem"
       }
     >
       <div className="PokemonSprite">

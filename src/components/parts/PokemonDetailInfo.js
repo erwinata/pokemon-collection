@@ -10,7 +10,7 @@ import { Link } from "react-router-dom";
 
 export const PokemonDetailInfo = () => {
   var pokemonDetail = useSelector(state => state.pokemonDetail);
-  console.log(pokemonDetail.pokemon.moves);
+
   return (
     <div className="PokemonDetailInfo">
       <h1>

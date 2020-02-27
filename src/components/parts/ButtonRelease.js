@@ -1,28 +1,23 @@
 import "./ButtonRelease.css";
 import React from "react";
 import Swal from "sweetalert2";
-import { releasePokemon } from "../../actions/pokemonAction";
-import { useDispatch } from "react-redux";
+import { RemovePokemon } from "../utils/ManagePokemon";
+import { useSelector, useDispatch } from "react-redux";
 
-export const ReleasePokemon = (id, nickname, dispatch, data, setData) => {
+export const PopupRelease = nickname => {
   Swal.fire({
     icon: "info",
     title: nickname + " has released"
   });
-
-  dispatch(releasePokemon(id));
-
-  var pokemon = data.pokemon;
-  pokemon.nickname = "";
-
-  setData({
-    pokemon: data.pokemon,
-    hasPokemon: false,
-    loading: false
-  });
 };
 
-export const ButtonRelease = props => {
+export const ReleasePokemon = (id, nickname, dispatch) => {
+  PopupRelease(nickname);
+  RemovePokemon(id, dispatch);
+};
+
+export const ButtonRelease = () => {
+  const pokemonDetail = useSelector(state => state.pokemonDetail);
   var dispatch = useDispatch();
 
   return (
@@ -30,11 +25,9 @@ export const ButtonRelease = props => {
       className="BtnRelease"
       onClick={() =>
         ReleasePokemon(
-          props.data.pokemon.id,
-          props.data.pokemon.name,
-          dispatch,
-          props.data,
-          props.setData
+          pokemonDetail.pokemon.id,
+          pokemonDetail.pokemon.name,
+          dispatch
         )
       }
     >

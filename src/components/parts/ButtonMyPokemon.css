@@ -18,7 +18,7 @@
   );
   white-space: nowrap;
 }
-.ButtonMyPokemon > * {
+.ButtonMyPokemon h1 > * {
   display: inline-block;
   vertical-align: middle;
 }
@@ -26,7 +26,8 @@
   height: 1rem;
   margin-right: 0.5rem;
 }
-.ButtonMyPokemon .Text h2 {
+.ButtonMyPokemon h2 {
+  display: block;
   font-size: 0.75rem;
   color: #fff;
   font-weight: normal;
@@ -34,7 +35,7 @@
   margin-top: -0.25rem;
   letter-spacing: 0.1rem;
 }
-.ButtonMyPokemon .Text h1 {
+.ButtonMyPokemon h1 {
   position: relative;
   top: 0.15rem;
   text-align: center;
@@ -44,7 +45,7 @@
   border-radius: 10rem;
   padding: 0 1.5rem 0.15rem;
 }
-.ButtonMyPokemon .Text h1 span {
+.ButtonMyPokemon h1 span {
   color: #7bddd2;
   font-size: 0.9rem;
   font-weight: lighter;

@@ -1,6 +1,6 @@
 import "./MoveItem.css";
 import React from "react";
-import { GetTypesImage } from "../helpers/PokemonType";
+import { GetTypesImage } from "../utils/PokemonType";
 
 export const MoveItem = props => {
   return (

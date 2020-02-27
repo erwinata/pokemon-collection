@@ -7,13 +7,11 @@ export const ButtonMyPokemon = () => {
 
   return (
     <div className="ButtonMyPokemon">
-      <div className="Text">
-        <h2>MY POKEMON</h2>
-        <h1>
-          <img src="/res/pokeball-icon.png" alt="Pokeball"></img>
-          {myPokemon.total}
-        </h1>
-      </div>
+      <h2>MY POKEMON</h2>
+      <h1>
+        <img src="/res/pokeball-icon.png" alt="Pokeball"></img>
+        <span>{myPokemon.total}</span>
+      </h1>
     </div>
   );
 };

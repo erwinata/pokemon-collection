@@ -1,55 +1,60 @@
 import "./ButtonCatch.css";
 import React from "react";
 import Swal from "sweetalert2";
-import {
-  addPokemon,
-  updateHasPokemon,
-  updateNickname
-} from "../../actions/pokemonAction";
+import { AddPokemon } from "../utils/ManagePokemon";
 import { useSelector, useDispatch } from "react-redux";
 
-export const CatchPokemon = async (pokemon, dispatch) => {
-  var name = pokemon.name;
-  var id = pokemon.id;
-
+export const RandomizerCatchChance = () => {
   if (Math.random() < 0.5) {
-    const { value: nickname } = await Swal.fire({
-      title: "Success!",
-      html: name + " successfully caught!<br>Give it a nickname!",
-      input: "text",
-      icon: "success",
-      inputValue: name,
-      inputAttributes: {
-        autocapitalize: "on"
-      },
-      showCancelButton: false,
-      confirmButtonText: "OK"
-    });
+    return true;
+  }
+  return false;
+};
 
-    AddPokemon(id, nickname, dispatch);
+export const PopupSuccess = async name => {
+  const { value: nickname } = await Swal.fire({
+    title: "Success!",
+    html: name + " successfully caught!<br>Give it a nickname!",
+    input: "text",
+    icon: "success",
+    inputValue: name,
+    inputAttributes: {
+      autocapitalize: "on"
+    },
+    showCancelButton: false,
+    confirmButtonText: "OK"
+  });
+
+  return nickname;
+};
+
+export const PopupFail = async () => {
+  Swal.fire({
+    icon: "error",
+    title: "Failed!",
+    text: "Try to catch again!"
+  });
+};
+
+export const CatchPokemon = async (success, pokemon, dispatch) => {
+  if (success) {
+    var nickname = await PopupSuccess(pokemon.name);
+    AddPokemon(pokemon.id, nickname, dispatch);
   } else {
-    Swal.fire({
-      icon: "error",
-      title: "Failed!",
-      text: "Try to catch again!"
-    });
+    PopupFail();
   }
 };
 
-export const AddPokemon = async (id, nickname, dispatch) => {
-  dispatch(addPokemon(id, nickname));
-  dispatch(updateHasPokemon(true));
-  dispatch(updateNickname(nickname));
-};
-
-export const ButtonCatch = props => {
+export const ButtonCatch = () => {
   const pokemonDetail = useSelector(state => state.pokemonDetail);
   var dispatch = useDispatch();
 
   return (
     <button
       className="ButtonCatch"
-      onClick={() => CatchPokemon(pokemonDetail.pokemon, dispatch)}
+      onClick={() =>
+        CatchPokemon(RandomizerCatchChance(), pokemonDetail.pokemon, dispatch)
+      }
     >
       CATCH
     </button>

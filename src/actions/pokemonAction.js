@@ -29,9 +29,9 @@ export const addPokemon = (id, nickname) => {
   };
 };
 
-export const releasePokemon = id => {
+export const removePokemon = id => {
   return {
-    type: "RELEASE_POKEMON",
+    type: "REMOVE_POKEMON",
     data: {
       id: id
     }

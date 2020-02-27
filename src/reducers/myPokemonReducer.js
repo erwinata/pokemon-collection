@@ -10,7 +10,7 @@ export const myPokemonReducer = (state = initialState, action) => {
         total: state.total + 1,
         pokemon: [...state.pokemon, action.data]
       });
-    case "RELEASE_POKEMON":
+    case "REMOVE_POKEMON":
       var array = [...state.pokemon];
 
       var index = -1;
